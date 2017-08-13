@@ -42,7 +42,7 @@ RSpec.describe Game, type: :model do
       let(:deck){3}
       let(:created_game){Game.first}
       it{expect(game).to eq created_game}
-      it{expect(game.status).to eq "playing"}
+      it{expect(game.status).to eq "active"}
     end
   end
 
@@ -61,7 +61,7 @@ RSpec.describe Game, type: :model do
     context "with valid paramters" do
       let(:player){1}
       let(:deck){3}
-      let(:status){"over"}
+      let(:status){"inactive"}
       let(:created_game){Game.first}
       it{expect(game).to eq created_game}
       it{expect(game.status).to eq status}
