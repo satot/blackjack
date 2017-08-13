@@ -10,28 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812184327) do
+ActiveRecord::Schema.define(version: 20170813074729) do
 
   create_table "deal_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "player_id"
-    t.string "card"
+    t.bigint "player_id", null: false
+    t.string "card", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_deal_histories_on_player_id"
   end
 
   create_table "games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "status", limit: 1
-    t.integer "deck_count"
-    t.integer "player_count"
+    t.integer "status", limit: 1, default: 0, null: false
+    t.integer "deck_count", null: false
+    t.integer "player_count", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "game_id"
-    t.integer "status", limit: 1
-    t.boolean "is_dealer"
+    t.bigint "game_id", null: false
+    t.integer "status", limit: 1, default: 0, null: false
+    t.boolean "is_dealer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_players_on_game_id"
